@@ -3,10 +3,7 @@ package com.example.guestbook;
 
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,4 +23,13 @@ public class VisitorService {
                 })
                 .collect(Collectors.toList());
     }
+
+
+    public void create(VisitorDto visitorDto) {
+        guestRepository.save(
+                new VisitorEntity(visitorDto.getName(),
+                        visitorDto.getComments()
+                ));
+    }
+
 }

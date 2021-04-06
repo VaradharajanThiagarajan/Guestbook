@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,15 +25,15 @@ public class GuestBookIT {
     ObjectMapper objectMapper;
 
     @Test
+    @DirtiesContext
     public void getAllGuestBookEntries() throws Exception{
 
         mockMvc.perform(get("/Guestentries/Entries")
         ).andExpect(status().isOk())
                 .andExpect(jsonPath("length()").value(0));
     }
-
-
     @Test
+    @DirtiesContext
     public void addGuestBookEntries() throws Exception{
 
         VisitorDto visitor1 = new VisitorDto("Varadha","The Museum of fine arts is really good");
