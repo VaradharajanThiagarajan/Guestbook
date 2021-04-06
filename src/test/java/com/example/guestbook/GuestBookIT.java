@@ -25,7 +25,7 @@ public class GuestBookIT {
     @Test
     public void getAllGuestBookEntries() throws Exception{
 
-        mockMvc.perform(get("/entries")
+        mockMvc.perform(get("/Guestentries/Entries")
         ).andExpect(status().isOk())
                 .andExpect(jsonPath("length()").value(0));
     }
